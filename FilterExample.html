@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myapp" ng-controller="myctrl">
+
+        Enter Salary of Employee
+        <br />
+        <input type="text" ng-model="sal" />
+        <br />
+        {{sal|currency:'&#8360;'}}
+
+    </div>
+
+    <script>
+
+        var app = angular.module("myapp", []);
+        app.controller("myctrl", function ($scope) {
+            $scope.sal = 5000;
+            
+        });
+    </script>
+</body>
+</html>

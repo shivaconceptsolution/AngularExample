@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="MyCtrl">
+        <input type="text" ng-model="r" placeholder="dept" />
+        <select ng-model="r1">
+            <option ng-repeat="item in student" value="{{item.rno}}">{{item.sname}}</option>
+        </select>
+        <table>
+            <tr><th>RNO</th><th>Student Name</th><th>Deptname</th></tr>
+            <!----  <tr ng-repeat="s in student|filter:{rno:r}|filter:{sname:a}"><td>{{$index}}</td><td>{{s.rno}}</td><td>{{s.sname}}</td> </tr> -->
+            <tbody ng-repeat="s in student|filter:{Dept:r,rno:r1}">
+                <tr><td>{{s.rno}}</td><td>{{s.sname}}</td><td>{{s.Dept}}</td> </tr>
+
+
+            </tbody>
+
+           
+
+
+        </table>
+
+
+    </div>
+
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller("MyCtrl", function ($scope) {
+            $scope.student = [
+                { 'rno': 1001, 'sname': 'manish kumar','Dept':'IT' },
+                { 'rno': 1002, 'sname': 'ravi kumar', 'Dept': 'HR' },
+                { 'rno': 1003, 'sname': 'kamal kumar', 'Dept': 'IT' },
+                { 'rno': 1004, 'sname': 'jay kumar', 'Dept': 'HR' }
+
+               ];
+        });
+
+    </script>
+</body>
+</html>

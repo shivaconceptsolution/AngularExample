@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="app" class="container" ng-controller="pageCtrl" >
+        <h1>Angularjs Filter Nutshell</h1>
+        <hr />
+        <button ng-click="getData()">Click</button>
+        <form >
+
+            <div class='form-group'>
+                <div class='row'>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="search" ng-model='criteria1.Id' class="form-control" placeholder="Customer ID">
+                    </div>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="search" ng-model='criteria1.name' class="form-control" placeholder="Ship To Name">
+                    </div>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="search" ng-model='criteria1.address' class="form-control" placeholder="Address">
+                    </div>
+                </div>
+            </div>
+
+            <div class='form-group'>
+                <div class='row'>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="search" ng-model='criteria1.city' class="form-control" placeholder="City">
+                    </div>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="search" ng-model='criteria1.country' class="form-control" placeholder="Country">
+                    </div>
+                    <div class="right-inner-addon col-md-4 ">
+                        <input type="button" class="btn btn-success pull-right" value='Search' ng-click="search()" />
+                    </div>
+                </div>
+            </div>
+            <h3> Total Records: {{filtered.length}}</h3>
+            <table class="table table-bordered">
+                <tr>
+                    <th>Customer ID</th>
+                    <th>Ship To Name</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Country</th>
+                <tr>
+                <tr ng-repeat="item in filtered = (data.value | filter : {CustomerID : criteria.Id,
+                      ShipName: criteria.name,
+                      ShipAddress: criteria.address,
+                      ShipCity: criteria.city,
+                      ShipCountry: criteria.country })">
+                    <td>{{item.CustomerID}}</td>
+                    <td>{{item.ShipName}}</td>
+                    <td>{{item.ShipAddress}}</td>
+                    <td>{{item.ShipCity}}</td>
+                    <td>{{item.ShipCountry}}</td>
+                <tr>
+            </table>
+        </form>
+
+    </div>
+
+    <script>
+        var app = angular.module('app', []);
+        app.controller('pageCtrl', function ($scope, $http) {
+
+            $scope.getData = function () {
+                alert("hello");
+                $http.get('https://services.odata.org/V3/Northwind/Northwind.svc/Orders?$expand=Order_Details&$format=json')
+                    .then(function (response) {
+                        console.log(response.data);
+                        $scope.data = response.data;
+                    });
+            }
+
+            $scope.search = function () {
+                $scope.criteria = angular.copy($scope.criteria1);
+            }
+
+              /*  $http.get('https://services.odata.org/V3/Northwind/Northwind.svc/Orders?$expand=Order_Details&$format=json')
+                    .then(function (response) {
+                        console.log(response.data);
+                        $scope.data = response.data;
+                    });*/
+
+            
+        });
+    </script>
+</body>
+</html>

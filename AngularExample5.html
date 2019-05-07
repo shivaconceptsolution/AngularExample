@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="MyCtrl">
+        <select>
+         <option ng-repeat="item in student" value="{{item.rno}}">{{item.sname}}</option>
+       </select>
+        <table>
+            <tr><th>RNO</th><th>Student Name</th></tr>
+            <tr ng-repeat="s in student"><td>{{$index}}</td><td>{{s.rno}}</td><td>{{s.sname}}</td> </tr>
+
+        </table>
+
+
+    </div>
+
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller("MyCtrl", function ($scope) {
+            $scope.student = [
+                { 'rno': 1001, 'sname': 'manish kumar' },
+                { 'rno': 1002, 'sname': 'ravi kumar' },
+                { 'rno': 1003, 'sname': 'kamal kumar' },
+                { 'rno': 1004, 'sname': 'jay kumar' }
+
+               ];
+        });
+            
+    </script>
+</body>
+</html>

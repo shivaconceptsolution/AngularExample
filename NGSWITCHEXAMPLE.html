@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="">
+        <input type="radio" ng-model="myVar" value="C" />C
+        <br />
+        <input type="radio" ng-model="myVar" value="CPP" />CPP
+        <br />
+        <input type="radio" ng-model="myVar" value="DS" />DS
+        <br />
+        <select ng-model="myVar">
+            <option value="C">C</option>
+            <option value="CPP">CPP</option>
+            <option value="DS">DS</option>
+
+        </select>
+        <div ng-switch="myVar">
+
+            <div ng-switch-when="C">
+                <h1>Welcome in C Language</h1>
+                <h1>C Content</h1>
+            </div>
+            <div ng-switch-when="CPP">
+                <h1>Welcome in CPP Language</h1>
+                <h1>CPP Content</h1>
+
+            </div>
+            <div ng-switch-when="DS">
+                <h1>Welcome in DS</h1>
+                <h1>DS Content</h1>
+
+            </div>
+
+        </div>
+
+
+
+    </div>
+</body>
+</html>

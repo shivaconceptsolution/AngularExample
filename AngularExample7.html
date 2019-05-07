@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        <input type="text" placeholder="enter rno" ng-model="r" />
+        <br />
+        <br />
+        <input type="text" placeholder="enter sname" ng-model="s" />
+        <br />
+        <br />
+        <table>
+            <tr ng-repeat="s in student|filter:{rno:r,sname:s}">
+                <td>{{s.rno}}</td>
+                <td>{{s.sname}}</td>
+                <td>{{s.branch}}</td>
+                <td>{{s.fees}}</td>
+            </tr>
+
+        </table>
+
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("myCtrl", function ($scope) {
+            $scope.student = [
+                { 'rno': 1001, 'sname': "ABCD", 'branch': "CS", 'fees': 45000 },
+                { 'rno': 1002, 'sname': "KLMN", 'branch': "IT", 'fees': 65000 },
+                { 'rno': 1003, 'sname': "PQRS", 'branch': "CS", 'fees': 75000 }
+            ];         
+
+        });
+
+
+    </script>
+</body>
+</html>

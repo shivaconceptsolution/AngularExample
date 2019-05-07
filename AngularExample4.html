@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+    <div ng-app="myApp" ng-controller="MyCtrl">
+
+        <br />
+        <input type="checkbox" ng-model="course1" name="course1" value="C" />C
+        <br />
+        <br />
+        <input type="checkbox" ng-model="course2" name="course2" value="CPP" />CPP
+        <br />
+        <br />
+        <input type="submit" name="btnsubmit" value="Submit" ng-click="fun()" />
+        <br />
+       {{result}}
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("MyCtrl", function ($scope) {
+
+
+            $scope.course2 = true;
+            $scope.course1 = false;
+            $scope.fun = function () {
+                s1 = "",s2="";
+                if ($scope.course1) {
+                    s1 = "C";
+                }
+                else {
+                    s1 = " ";
+                }
+                if ($scope.course2) {
+                    s2 = "CPP";
+                }
+                else {
+                    s2 = " ";
+                }
+                $scope.result = s1 + " " + s2;
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="MyCtrl">
+        
+        <br />
+        <input type="radio" ng-model="a" name="course" value="C" />C
+        <br />
+        <br />
+        <input type="radio" ng-model="a" name="course" value="CPP"/>CPP
+        <br />
+        <br />
+        <input type="submit" name="btnsubmit" value="Submit" ng-click="fun()" />
+     {{c}}
+    </div>
+    <script>
+        var app = angular.module("myApp", []);
+        app.controller("MyCtrl", function ($scope) {
+
+
+         
+            $scope.fun = function () {
+               // alert($scope.a);
+                 $scope.c = $scope.a;
+            }
+        });
+
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Scripts/angular.min.js"></script>
+</head>
+<body>
+
+    <div ng-app="myApp" ng-controller="myctrl">
+        <input type="text" ng-model="a" />
+        <br />
+        <input type="button" name="btnclick" ng-click="fun($event)" value="1" />
+
+    </div>
+    <script>
+
+        var app = angular.module("myApp", []);
+        app.controller("myctrl", function ($scope) {
+            $scope.a = "";
+            $scope.fun = function () {
+               $scope.a+=event.target.value;
+            }
+
+        });
+    </script>
+</body>
+</html>
